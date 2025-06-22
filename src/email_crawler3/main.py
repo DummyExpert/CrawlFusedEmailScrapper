@@ -42,7 +42,16 @@ async def run_crawler(start_urls: list[str], *, use_playwright: bool = True,
     async def handle_request(context):
         context.log.info(f"Processing {context.request.url}")
         if hasattr(context, "page"):
-            body = await context.page.content()
+            try:
+                await context.page.wait_for_load_state("domcontentloaded")
+                body = await context.page.content()
+            except Exception as exc:  # handle navigation related errors
+                context.log.warning(f"Page content retrieval failed: {exc}")
+                try:
+                    body = await context.page.content()
+                except Exception as exc2:
+                    context.log.error(f"Second attempt failed: {exc2}")
+                    body = ""
         else:
             body = context.http_response.read().decode()
         found_emails.update(extract_emails(body))
