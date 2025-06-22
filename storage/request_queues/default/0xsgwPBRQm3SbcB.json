@@ -1,0 +1,23 @@
+{
+  "id": "0xsgwPBRQm3SbcB",
+  "unique_key": "https://www.mapsoft.com",
+  "order_no": null,
+  "handled_at": "2025-06-22 13:26:02.217528+00:00",
+  "request": {
+    "url": "https://www.mapsoft.com",
+    "method": "GET",
+    "headers": {},
+    "payload": null,
+    "user_data": {
+      "__crawlee": {
+        "state": 3
+      }
+    },
+    "retry_count": 0,
+    "no_retry": false,
+    "loaded_url": "https://mapsoft.com/",
+    "handled_at": "2025-06-22 13:26:02.217528+00:00",
+    "unique_key": "https://www.mapsoft.com",
+    "id": "0xsgwPBRQm3SbcB"
+  }
+}
