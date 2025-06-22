@@ -17,6 +17,8 @@ async def crawl_domain(start_url: str, *, max_pages: int = 50, concurrency: int 
     domain = urlparse(start_url).netloc
     dataset = await Dataset.open(name=f"emails-{domain}")
     await dataset.drop()
+    # Re-open to ensure a clean dataset exists after dropping
+    dataset = await Dataset.open(name=f"emails-{domain}")
 
     proxy_config = ProxyConfiguration(proxy_urls=list(proxy_urls)) if proxy_urls else None
 
